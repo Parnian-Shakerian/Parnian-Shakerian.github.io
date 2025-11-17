@@ -11319,20 +11319,57 @@ section.resume-section .resume-section-content {
 }
 
 
+/* Grid layout */
 .certificates {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
+    justify-items: center;
 }
 
-.certificate {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+/* Normal image style */
+.certificates img {
+    width: 180px; /* decent size */
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.certificate:hover {
+/* Hover effect */
+.certificates img:hover {
     transform: scale(1.05);
+}
+
+/* Zoomed modal effect */
+.certificates img.zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(4);
+    z-index: 1000;
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: zoom-out;
+    border: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+/* Disable background scroll when zoomed */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .certificates img {
+        width: 120px;
+    }
+
+    .certificates img.zoomed {
+        transform: translate(-50%, -50%) scale(3.5);
+    }
 }
 
